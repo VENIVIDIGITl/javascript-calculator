@@ -32,6 +32,8 @@ function addDecimal() {
 
 
 function useOperator(operator) {
+  // Prevent multiple operators
+  if (operatorValue && awaitingNextValue) return;
   const currentValue = Number(calculatorDisplay.textContent);
   // Assign firstValue if no value
   if (!firstValue) {
