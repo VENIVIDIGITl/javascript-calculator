@@ -33,15 +33,17 @@ function addDecimal() {
 
 function useOperator(operator) {
   // Prevent multiple operators
-  if (operatorValue && awaitingNextValue) return;
+  if (operatorValue && awaitingNextValue) {
+    operatorValue = operator;
+    return;
+  };
   const currentValue = Number(calculatorDisplay.textContent);
   // Assign firstValue if no value
   if (!firstValue) {
     firstValue = currentValue;
   } else {
-    console.log(firstValue, operatorValue, currentValue);
     const calculation = calculate[operatorValue](firstValue, currentValue);
-    console.log('calculation: ', calculation);
+    firstValue = calculation;
   }
   // Ready for next value, store operator
   awaitingNextValue = true;
