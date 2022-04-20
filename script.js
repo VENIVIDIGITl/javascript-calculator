@@ -43,6 +43,7 @@ function useOperator(operator) {
     firstValue = currentValue;
   } else {
     const calculation = calculate[operatorValue](firstValue, currentValue);
+    calculatorDisplay.textContent = calculation;
     firstValue = calculation;
   }
   // Ready for next value, store operator
