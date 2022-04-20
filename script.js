@@ -39,13 +39,24 @@ function useOperator(operator) {
   if (!firstValue) {
     firstValue = currentValue;
   } else {
-    console.log('currVal: ', currentValue);
+    console.log(firstValue, operatorValue, currentValue);
+    const calculation = calculate[operatorValue](firstValue, currentValue);
+    console.log('calculation: ', calculation);
   }
   // Ready for next value, store operator
   awaitingNextValue = true;
   operatorValue = operator;
-  console.log('fV: ', firstValue, 'oV:', operatorValue);
 }
+
+
+// Calculate first and second values depending on operator
+const calculate = {
+  '/':(firstNumber, secondNumber) => firstNumber / secondNumber,
+  '*':(firstNumber, secondNumber) => firstNumber * secondNumber,
+  '+':(firstNumber, secondNumber) => firstNumber + secondNumber,
+  '-':(firstNumber, secondNumber) => firstNumber - secondNumber,
+  '=':(firstNumber, secondNumber) => secondNumber,
+};
 
 
 // Add Event Listeners for numbers, operators, decimal buttons
